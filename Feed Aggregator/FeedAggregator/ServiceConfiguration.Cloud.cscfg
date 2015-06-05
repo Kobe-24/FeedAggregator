@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="FeedAggregator" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-06.2.4">
+  <Role name="RSSParser">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="RSSFeeds" value="http://feeds.feedburner.com/TechCrunch/" />
+      <Setting name="RefreshIntervalInMinutes" value="10" />
+      <Setting name="Redis.ConnectionString" value="[Your-Azure-Redis-Cache-name-here].redis.cache.windows.net,password=[Your Azure Redis service password here],ssl=True" />
+      <Setting name="Redis.KeyPrefix" value="FeedAggregator:" />
+      <Setting name="Redis.CacheExpirationInMinutes" value="1440" />
+      <Setting name="Redis.ExpirationIntervalInMinutes" value="5" />
+      <Setting name="Redis.BaseScore" value="1000" />
+    </ConfigurationSettings>
+    <Certificates />    
+  </Role>
+</ServiceConfiguration>
